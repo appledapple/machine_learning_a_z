@@ -1,1 +1,3 @@
-# machine_learning_a_z
+# Machine Learning A-Z™: Hands-On Python & R In Data Science
+
+Lecture notes & Machine exercises
