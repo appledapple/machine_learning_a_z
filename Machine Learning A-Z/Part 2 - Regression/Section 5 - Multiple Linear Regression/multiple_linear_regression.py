@@ -46,12 +46,14 @@ y_pred = regressor.predict(X_test)
 
 # Building the optimal model using Backward Elimination
 import statsmodels.formula.api as sm
+#import statsmodels.regression.linear_model as sm
 # Add column of 1 to the X feature. This corresponds to the X0 feature.
 # This is being done in LinearRegression library but not in statsmodels
 X = np.append(arr = np.ones((50, 1)).astype(int), values = X, axis = 1)
 
 # matrix containing optimal variables
 X_opt = X[:, [0, 1, 2, 3, 4, 5]]
+# BE step 1: select a significance level (SL = 0.05)
 # BE step 2
 regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
 # BE step 3
@@ -59,28 +61,20 @@ regressor_OLS.summary()
 
 # BE step4
 X_opt = X[:, [0, 1, 3, 4, 5]]
-# BE step 2
 regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
-# BE step 3
 regressor_OLS.summary()
 
 # BE step4
-X_opt = X[:, [0, 2, 3, 4]]
-# BE step 2
+X_opt = X[:, [0, 3, 4, 5]]
 regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
-# BE step 3
 regressor_OLS.summary()
 
 # BE step4
-X_opt = X[:, [0, 2, 3]]
-# BE step 2
+X_opt = X[:, [0, 3, 5]]
 regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
-# BE step 3
 regressor_OLS.summary()
 
 # BE step4
-X_opt = X[:, [0, 2]]
-# BE step 2
+X_opt = X[:, [0, 3]]
 regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
-# BE step 3
 regressor_OLS.summary()
